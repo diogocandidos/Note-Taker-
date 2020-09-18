@@ -40,7 +40,7 @@ Application should allow users to delete previously saved notes.
 <img width="700" alt="note-taker2" src="https://user-images.githubusercontent.com/61811579/93627716-32c0d700-f99a-11ea-85f1-ca2c2027bdce.png">
 
   ## Licence
-  
+
 MIT License
 
 Copyright (c) 2020 Diogo Candido da Silva
@@ -64,7 +64,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ## GitHub
-- [User name] Diogo Candido da Silva
-- [GitHub Profile](https://github.com/diogocandidos//Note-Taker-)
+- [User name]Diogo Candido da Silva
+- [GitHub Profile](https://github.com/diogocandidos)
 
 
