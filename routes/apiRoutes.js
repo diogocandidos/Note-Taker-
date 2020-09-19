@@ -35,7 +35,7 @@ module.exports = function (app) {
 
                     newNote.push(newInfo);
                 }
-                    console.log(newNote); //Steven
+                    console.log(newNote);
                     
                 fs.writeFile(path.join(__dirname, "../db/db.json"), JSON.stringify(newNote, null, 2), (err) => {
                     if (err) throw err;
@@ -49,36 +49,28 @@ module.exports = function (app) {
     //DELETE
 
     app.delete("/api/notes/:id", function (req, res) {
-        var noteID = req.params.id;
-        console.log(noteID);
-
+        var noteID = parseFloat(req.params.id);
         var newNote = [];
-
         fs.readFile(path.join(__dirname, "../db/db.json"), "utf8", function (err, data) {
             if (err) throw err;
-            console.log(data); //Steven
-
             var db = JSON.parse(data);
-
             for (var i = 0; i < db.length; i++) {
-                if (db[i].id !== noteID) { //Steven
+                if (db[i].id !== noteID) { 
                     var newInfo = {
                         title: db[i].title,
                         text: db[i].text,
                         id: db[i].id
                     };
-                }
-                console.log(newNote); //Steven 
-
-                newNote.push(newInfo);
+                    newNote.push(newInfo);
+                }        
             }
             fs.writeFile(path.join(__dirname, "../db/db.json"), JSON.stringify(newNote, null, 2), function (err) {
                 if (err) throw err;
                 res.json("Note deleted");
             });    
         });
-
-        
     });
 
 };
+
+
