@@ -35,7 +35,8 @@ module.exports = function (app) {
 
                     newNote.push(newInfo);
                 }
-
+                    console.log(newNote); //Steven
+                    
                 fs.writeFile(path.join(__dirname, "../db/db.json"), JSON.stringify(newNote, null, 2), (err) => {
                     if (err) throw err;
                     res.json(req.body);
@@ -55,24 +56,29 @@ module.exports = function (app) {
 
         fs.readFile(path.join(__dirname, "../db/db.json"), "utf8", function (err, data) {
             if (err) throw err;
+            console.log(data); //Steven
+
             var db = JSON.parse(data);
 
             for (var i = 0; i < db.length; i++) {
-                if (i !== noteID) {
+                if (db[i].id !== noteID) { //Steven
                     var newInfo = {
                         title: db[i].title,
                         text: db[i].text,
-                        id: newNote.length
+                        id: db[i].id
                     };
                 }
+                console.log(newNote); //Steven 
+
                 newNote.push(newInfo);
             }
+            fs.writeFile(path.join(__dirname, "../db/db.json"), JSON.stringify(newNote, null, 2), function (err) {
+                if (err) throw err;
+                res.json("Note deleted");
+            });    
         });
 
-        fs.writeFile(path.join(__dirname, "../db/db.json"), JSON.stringify(newNote, null, 2), function (err) {
-            if (err) throw err;
-            res.json("Note deleted");
-        });
+        
     });
 
 };
